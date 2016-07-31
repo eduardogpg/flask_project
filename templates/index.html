@@ -1,0 +1,77 @@
+{% extends 'bases/_base.html' %}
+
+
+{% block title %} {{ context['title'] }} {% endblock %}
+
+
+{% block body %} 
+	
+	<div class="center-align  ">
+
+		<h4 class="header text-orange text-darken-3">Bienvenidos a {{ context['hotel_name']  }} </h4>
+	</div>
+
+	<div class="center">
+		<div class="parallax-container">
+      <div class="parallax">
+        <img src= {{ url_for('static', filename = 'image/hotel.jpg') }} alt="hotel_image"/>
+      </div>
+    </div>
+	</div>
+
+	<div class="container">
+    <div class="section">
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center #d7ccc8"><i class="material-icons">code</i></h2>
+            <h5 class="center">Resort</h5>
+
+            <p class="grey-text text-darken-3 lighten-3 center-align">Ubicado en una de las Playas del pacifico en México, este Hotel es sin duda con orgullo, uno de nuestros más lujosos hoteles del pais. Donde te brindamos un servicio de calidad que te mereces, nos enfocaremos en que pases los mejores momentos de tu vida en este lugar, sin duda una experiencia que no te puedes perder.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center"><i class="material-icons">group</i></h2>
+            <h5 class="center">Todo Incluido</h5>
+
+            <p class="grey-text text-darken-3 lighten-3 center-align">
+              El servicio de Todo Incluido, te permitirá disfrutar de la gastronomía de México. Tiene una gran variedad de recetas y es reconocida por sus sabores distintivos y sofisticados con gran condimentación. Además no olvides provar nuestras bebidas regionales las cuales te garantizamos serán de tu agrado total.
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center"><i class="material-icons">assignment</i></h2>
+            <h5 class="center">Actividades</h5>
+
+            <p class="grey-text text-darken-3 lighten-3 center-align">
+              También encontrarás un sin fin de actividades y deportes que realizar durante tu estancia dentro del resot, todo completamente gratis,. Podrás practicar buceo, pesca, basquetball, bodyboard, baile de salón, y varios deportes acuáticos en la playa. Recordamos que el servicio de kayak se encuentra restringidos durante la temporada de lluvias.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+	<div class="section white" id="project">
+    <div class="row container">
+      <h4 class="header text-darken-3 center-align"> {{ context['hotel_name'] }} </h4>
+      <p class="grey-text text-darken-3 lighten-3 center-align">
+        Ubicado en una de las Playas del pacifico en México, este Hotel es sin duda con orgullo, uno de nuestros más lujosos hoteles del pais. Donde te brindamos un servicio de calidad que te mereces, nos enfocaremos en que pases los mejores momentos de tu vida en este lugar, sin duda una experiencia que no te puedes perder.
+
+        El servicio de Todo Incluido, te permitirá disfrutar de la gastronomía de México. Tiene una gran variedad de recetas y es reconocida por sus sabores distintivos y sofisticados con gran condimentación. Además no olvides provar nuestras bebidas regionales las cuales te garantizamos serán de tu agrado total.
+
+        También encontrarás un sin fin de actividades y deportes que realizar durante tu estancia dentro del resot, todo completamente gratis,. Podrás practicar buceo, pesca, basquetball, bodyboard, baile de salón, y varios deportes acuáticos en la playa. Recordamos que el servicio de kayak se encuentra restringidos durante la temporada de lluvias.
+
+      </p>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}
+

@@ -1,22 +1,33 @@
 from flask import Flask
-app = Flask(__name__)
+from flask import render_template
 
-@app.route("/hello/world")
-def hello_world():
-	return '<h2> Hello world </h2>'
+app = Flask(__name__)# template_folder='templates')
 
-@app.route("/user/<name>")
-def user(name):
-	return '<h2> Hello ' + name + '</h2>'	
-
-#http://stackoverflow.com/questions/19574694/flask-hit-decorator-before-before-request-signal-fires
-@app.before_request
-def before_request():
-	print "Hola mundo"
-
+@app.route('/')
 def index():
-	return 'index dos:3'	
+	title = "Resort Facilito"
+	hotel_name = "Facilito Resort"
+	num_available_room = 400;
+
+	context = {
+		'title': title,
+		'hotel_name' : hotel_name,
+		'num_available_room' : num_available_room
+	}
+	return render_template('index.html', context = context)
+
+@app.route('/contact')
+def contact():
+	title = "Contacto Resort Facilito"
+	hotel_name = "Facilito Resort"
+	num_available_room = 400;
+
+	context = {
+		'title': title,
+		'hotel_name' : hotel_name,
+		'num_available_room' : num_available_room
+	}
+	return render_template('contact.html', context = context)
 
 if __name__ == '__main__':
-	app.add_url_rule('/', 'index', index)
 	app.run()

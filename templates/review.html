@@ -1,0 +1,24 @@
+{% extends 'base/base.html'%}
+{% from "base/_formhelpers.html" import render_field %}
+
+{% block title %} {{ context['title'] }}  {% endblock %}
+
+{% block content %}
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                   
+                    <hr>
+                    <h2 class="section-heading">The Final Frontier</h2>
+
+                    <p>There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.</p>
+
+                    <hr>
+                    
+                </div>
+            </div>
+        </div>
+    </article>
+
+{% endblock %}

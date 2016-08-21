@@ -23,23 +23,23 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="{{ url_for('index') }}">Home</a>
                     </li>
                     <li>
-                        <a href="about.html">About</a>
+                         <a href="{{ url_for('about') }}">About</a>
                     </li>
                     <li>
-                        <a href="post.html">Reviews</a>
+                        <a href="{{ url_for('review') }}">Reviews</a>
                     </li>
                     <li>
-                        <a href="contact.html">Contact</a>
+                        <a href="{{ url_for('contact') }}">Contact</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <header class="intro-header" style="background-image: url('static/img/home-bg.jpg')">
+    <header class="intro-header" style="background-image: url('static/img/hotel.jpg')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">

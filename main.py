@@ -7,11 +7,35 @@ from flask import request
 from flask import redirect
 from flask import url_for
 from flask import flash
+from flask import copy_current_request_context
+
+from flask_mail import Mail
+from flask_mail import Message
+
+import threading
 
 import forms
 import model
 
 app = Flask(__name__)
+
+##https://support.google.com/accounts/answer/6010255?hl=en
+app.config['MAIL_SERVER'] = "smtp.gmail.com"
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_SSL'] = False
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = "eduardo@codigofacilito.com"
+app.config['MAIL_PASSWORD'] = "C=eQ9KF="
+
+
+mail = Mail(app)
+
+def send_email(user):
+	msg = Message("Test numero uno",
+							sender="eduardo@codigofacilito.com",
+							recipients=["eduardo78d@gmail.com"])
+	msg.html = render_template('thanks.html', user = user)
+	mail.send(msg)
 
 @app.before_request
 def before_request():
@@ -46,13 +70,17 @@ def review():
 	context = {
 		'title': title,
 	}
-	comments = model.Comment.select().limit(5).order_by('created_date')
+	comments = model.Comment.select().limit(5).order_by(model.Comment.created_date.desc())
 	return render_template('review.html', context = context, comments = comments)
 
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
 	title = "Contactanos"
 	label = "¿Alguna pregunta o sugerencia?"
+
+	@copy_current_request_context
+	def send_message(message):
+			send_email(message)
 
 	form = forms.CommentForm(request.form)
 	if request.method == 'POST' and form.validate():
@@ -61,6 +89,9 @@ def contact():
 												text = form.comment.data)
 
 		flash('Tu comentario ha sido creado exitosamente!')
+		sender = threading.Thread(name='mail_sender', target=send_message, args=("Thread",))
+		sender.start()
+
 		return redirect(url_for('review'))
 
 	context = {

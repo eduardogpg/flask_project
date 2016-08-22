@@ -2,22 +2,27 @@
 {% block title %} {{ context['title'] }}  {% endblock %}
 
 {% block content %}
-    {% for comment in comments %}
-        <article>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                        <hr>
-                        <h2 class="section-heading">{{ comment.username }} - {{ comment.id }}</h2>
-                        <h5> {{ comment.get_date() }}</h5>
-                        <p>{{ comment.text }}</p>
-                    </div>
+    
+    <div class="container">
+        {% for comment in comments %}
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <hr>
+                    <h2 class="section-heading">{{ comment.username }} - {{ comment.id }}</h2>
+                    <h5> {{ comment.get_date() }}</h5>
+                    <p>{{ comment.text }}</p>
                 </div>
             </div>
-        </article>
-    {% endfor %}
-    
-    {% if next_page > 0 %}
-        <a href="{{ url_for('review', page = next_page ) }}" >Ver más</a>
-    {% endif %}
+        {% endfor %}    
+
+        {% if next_page > 0 %}
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="pagination">
+                    <li><a href="{{ url_for('review', page = next_page ) }}">Ver más</a></li>
+                </ul>
+            </div>
+        {% endif %}
+
+    </div>
+
 {% endblock %}

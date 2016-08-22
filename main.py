@@ -41,7 +41,6 @@ def send_email(user):
 def before_request():
 	g.db = model.DATABASE
 	g.db.connect()
-	print "Conexión exitosa"
 
 @app.after_request
 def after_request(response):
@@ -80,9 +79,6 @@ def review(page=1):
 		last_id = comments[::-1][0].id
 		if model.Comment.select().where(model.Comment.id < last_id).count():
 			next_page = page + 1
-			print "Eduardo Ismael "
-			print next_page
-
 	return render_template('review.html', context = context, comments = comments, next_page = next_page)
 
 @app.route('/contact', methods=['GET', 'POST'])

@@ -34,7 +34,7 @@
         </div>
     </nav>
 
-    <header class="intro-header" style="background-image: url('static/img/hotel.jpg')">
+    <header class="intro-header" style="background-image: url('/static/img/hotel.jpg')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -50,14 +50,13 @@
     {% with messages = get_flashed_messages() %}
       {% if messages %}
         {% for message in messages %}
-        <div class="row">
-            <div class="center">
-                <div class="alert alert-success">
-                    <strong class="text-center"> {{ message }}. </strong>
+            <div class="row">
+                <div class="center">
+                    <div class="alert alert-success">
+                        <strong class="text-center"> {{ message }}. </strong>
+                    </div>
                 </div>
             </div>
-        </div>
-
         {% endfor %}
       {% endif %}
     {% endwith %}

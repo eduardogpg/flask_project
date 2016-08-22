@@ -67,7 +67,6 @@ def contact():
 		'title': title,
 		'label' : label
 	}
-
 	return render_template('contact.html', context = context, form = form)
 
 if __name__ == '__main__':

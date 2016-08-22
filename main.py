@@ -65,12 +65,16 @@ def about():
 	return render_template('about.html', context = context)
 
 @app.route('/reviews', methods=['GET'])
-def review():
+@app.route('/reviews/<int:page>', methods=['GET'])
+def review(page=2):
+	paginate_by = 10
+
 	title = "About"
 	context = {
 		'title': title,
 	}
-	comments = model.Comment.select().limit(5).order_by(model.Comment.created_date.desc())
+	#comments = model.Comment.select().limit(5).order_by(model.Comment.created_date.desc())
+	comments = model.Comment.select().paginate(page, paginate_by).order_by(model.Comment.id.desc())
 	return render_template('review.html', context = context, comments = comments)
 
 @app.route('/contact', methods=['GET', 'POST'])

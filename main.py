@@ -66,8 +66,9 @@ def about():
 
 @app.route('/reviews', methods=['GET'])
 @app.route('/reviews/<int:page>', methods=['GET'])
-def review(page=2):
+def review(page=1):
 	paginate_by = 10
+	next_page = 0
 
 	title = "About"
 	context = {
@@ -75,7 +76,14 @@ def review(page=2):
 	}
 	#comments = model.Comment.select().limit(5).order_by(model.Comment.created_date.desc())
 	comments = model.Comment.select().paginate(page, paginate_by).order_by(model.Comment.id.desc())
-	return render_template('review.html', context = context, comments = comments)
+	if len(comments):
+		last_id = comments[::-1][0].id
+		if model.Comment.select().where(model.Comment.id < last_id).count():
+			next_page = page + 1
+			print "Eduardo Ismael "
+			print next_page
+
+	return render_template('review.html', context = context, comments = comments, next_page = next_page)
 
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():

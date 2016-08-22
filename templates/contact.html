@@ -1,5 +1,5 @@
 {% extends 'base/base.html'%}
-{% from "base/_formhelpers.html" import render_field %}
+{% from "macro.html" import render_field %}
 
 {% block title %} {{ context['title'] }}  {% endblock %}
 
@@ -9,10 +9,9 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <p>¿Alguna duda, algún comentario o alguna aclaración acerca del curso?!
-                </p>
-                <p>
                     Con toda confianza estamos para ayudarte, estás a un submit de distancia.
                 </p>
+
                 <br>
                 <br>
                 

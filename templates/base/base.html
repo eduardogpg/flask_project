@@ -9,10 +9,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
     <link rel= "stylesheet" href= "{{ url_for('static',filename='css/styles.css') }}">
-    
-    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
 </head>
 
@@ -23,7 +19,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="{{ url_for('index') }}">Home</a>
+                        <a href="{{ url_for('index') }}" >Home</a>
                     </li>
                     <li>
                          <a href="{{ url_for('about') }}">About</a>
@@ -44,14 +40,30 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="site-heading">
-                        <h1>Curso Flask</h1>
-                        <hr class="small">
-                        <span class="subheading">Curso completamente Gratuito</span>
+                        <h1 class="text-backgroud">Curso Flask</h1>
                     </div>
                 </div>
             </div>
         </div>
     </header>
+
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+        <div class="row">
+            <div class="center">
+                <div class="alert alert-success">
+                    <strong class="text-center"> {{ message }}. </strong>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+
 
     {% block content %} 
 
@@ -60,7 +72,7 @@
     <footer>
         <div class="container">
             <div class="row">
-                <p class="copyright text-muted">Copyright &copy; Your Website 2016</p>
+                <p class="copyright text-muted">&copy; Curso Flask 2016</p>
             </div>
         </div>
     </footer>
